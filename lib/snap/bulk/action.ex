@@ -3,11 +3,12 @@ defmodule Snap.Bulk.Action.Create do
   Represents a create step in a `Snap.Bulk` operation
   """
   @enforce_keys [:doc]
-  defstruct [:_index, :_id, :require_alias, :doc]
+  defstruct [:_index, :_id, :_type, :require_alias, :doc]
 
   @type t :: %__MODULE__{
           _index: String.t() | nil,
           _id: String.t() | nil,
+          _type: String.t() | nil,
           require_alias: boolean() | nil,
           doc: map()
         }
@@ -18,11 +19,12 @@ defmodule Snap.Bulk.Action.Delete do
   Represents a delete step in a `Snap.Bulk` operation
   """
   @enforce_keys [:_id]
-  defstruct [:_index, :_id, :require_alias]
+  defstruct [:_index, :_id, :_type, :require_alias]
 
   @type t :: %__MODULE__{
           _index: String.t() | nil,
           _id: String.t(),
+          _type: String.t() | nil,
           require_alias: boolean() | nil
         }
 end
@@ -32,11 +34,12 @@ defmodule Snap.Bulk.Action.Index do
   Represents an index step in a `Snap.Bulk` operation
   """
   @enforce_keys [:doc]
-  defstruct [:_index, :_id, :require_alias, :doc]
+  defstruct [:_index, :_id, :_type, :require_alias, :doc]
 
   @type t :: %__MODULE__{
           _index: String.t() | nil,
           _id: String.t() | nil,
+          _type: String.t() | nil,
           require_alias: boolean() | nil,
           doc: map()
         }
@@ -51,6 +54,7 @@ defmodule Snap.Bulk.Action.Update do
     :_id,
     :_index,
     :_source,
+    :_type,
     :doc,
     :doc_as_upsert,
     :require_alias,
@@ -62,6 +66,7 @@ defmodule Snap.Bulk.Action.Update do
           _id: String.t() | nil,
           _index: String.t() | nil,
           _source: boolean() | nil,
+          _type: String.t() | nil,
           doc: map(),
           doc_as_upsert: boolean() | nil,
           require_alias: boolean() | nil,
