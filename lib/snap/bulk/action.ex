@@ -78,8 +78,8 @@ end
 defimpl Jason.Encoder, for: Snap.Bulk.Action.Create do
   require Jason.Helpers
 
-  def encode(%Snap.Bulk.Action.Create{_index: index, _id: id, require_alias: require_alias}, opts) do
-    values = [_index: index, _id: id, require_alias: require_alias]
+  def encode(%Snap.Bulk.Action.Create{_index: index, _id: id, _type: type, require_alias: require_alias}, opts) do
+    values = [_index: index, _id: id, _type: type, require_alias: require_alias]
 
     values
     |> Enum.reject(&is_nil(elem(&1, 1)))
@@ -91,8 +91,8 @@ end
 defimpl Jason.Encoder, for: Snap.Bulk.Action.Delete do
   require Jason.Helpers
 
-  def encode(%Snap.Bulk.Action.Delete{_index: index, _id: id, require_alias: require_alias}, opts) do
-    values = [_index: index, _id: id, require_alias: require_alias]
+  def encode(%Snap.Bulk.Action.Delete{_index: index, _id: id, _type: type, require_alias: require_alias}, opts) do
+    values = [_index: index, _id: id, _type: type, require_alias: require_alias]
 
     values
     |> Enum.reject(&is_nil(elem(&1, 1)))
@@ -104,8 +104,8 @@ end
 defimpl Jason.Encoder, for: Snap.Bulk.Action.Update do
   require Jason.Helpers
 
-  def encode(%Snap.Bulk.Action.Update{_index: index, _id: id, require_alias: require_alias}, opts) do
-    values = [_index: index, _id: id, require_alias: require_alias]
+  def encode(%Snap.Bulk.Action.Update{_index: index, _id: id, _type: type, require_alias: require_alias}, opts) do
+    values = [_index: index, _id: id, _type: type, require_alias: require_alias]
 
     values
     |> Enum.reject(&is_nil(elem(&1, 1)))
@@ -117,8 +117,8 @@ end
 defimpl Jason.Encoder, for: Snap.Bulk.Action.Index do
   require Jason.Helpers
 
-  def encode(%Snap.Bulk.Action.Index{_index: index, _id: id, require_alias: require_alias}, opts) do
-    values = [_index: index, _id: id, require_alias: require_alias]
+  def encode(%Snap.Bulk.Action.Index{_index: index, _id: id, _type: type, require_alias: require_alias}, opts) do
+    values = [_index: index, _id: id, _type: type, require_alias: require_alias]
 
     values
     |> Enum.reject(&is_nil(elem(&1, 1)))
